@@ -31,9 +31,12 @@
       "@models/*": ["models/*"],
       "@routers/*": ["routers/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@contracts/*": ["src/contracts/*"],
+      "@shared/*": ["shared/*"],
+      "@enums/*": ["enums/*"]
     }
   },
-  "include": ["src//*.ts", "src//*.json", ".env"],
+  "include": ["src/**/**/*", ".env"],
   "exclude": ["node_modules", "src/http", "src/logs", "src/tests"]
 }
