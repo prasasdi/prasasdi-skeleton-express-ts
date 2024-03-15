@@ -33,7 +33,7 @@
       "@routers/*": ["routers/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
-      "@contracts/*": ["src/contracts/*"],
+      "@contracts/*": ["contracts/*"],
       "@shared/*": ["shared/*"],
       "@enums/*": ["enums/*"],
       "@containers/*": ["containers/*"]
