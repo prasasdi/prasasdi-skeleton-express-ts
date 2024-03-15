@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["es2020"],
-    "typeRoots": ["node_modules/@types"],
+    "target": "ES5",
+    "lib": ["ES5", "DOM"],
+    // "types": ["reflect-metadata", "types"],
+    "typeRoots": ["node_modules/@types", "node_modules/@reflect-metadata"],
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -34,7 +35,8 @@
       "@utils/*": ["utils/*"],
       "@contracts/*": ["src/contracts/*"],
       "@shared/*": ["shared/*"],
-      "@enums/*": ["enums/*"]
+      "@enums/*": ["enums/*"],
+      "@containers/*": ["containers/*"]
     }
   },
   "include": ["src/**/**/*", ".env"],
