@@ -40,7 +40,7 @@ app.get('/logger', (_, res) =>
     res.send("Hello from logger!");
 });
 app.get('/logger/error/:msg', (req, res, next) => {
-    const [error] = await to(false);
+    
     try {
         throw new BadRequestException(req.params["msg"]);
     } catch(error) {
