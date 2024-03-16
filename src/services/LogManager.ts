@@ -1,22 +1,24 @@
 import { ILoggerManager } from "@/contracts/ILoggerManager";
-import { MeLogger } from "@/utils/MeLogger";
+import { NikiLoggerCah } from "@/utils/NikiLoggerCah";
 import { injectable } from "inversify";
 
 @injectable()
 export class LoggerManager implements ILoggerManager {
+    Logger = NikiLoggerCah.GetCurrentLogger();
+
     LogError(message:string):void {
-        MeLogger.error(message);
+        this.Logger.error(message);
     };
     LogWarn(message:string):void {
-        MeLogger.warn(message);
+        this.Logger.warn(message);
     };
     LogInfo(message:string): void {
-        MeLogger.info(message);
+        this.Logger.info(message);
     };
     LogHttp(message:string):void {
-        MeLogger.http(message);
+        this.Logger.http(message);
     };
     LogDebug(message:string):void {
-        MeLogger.debug(message);
+        this.Logger.debug(message);
     };
 }

@@ -5,15 +5,13 @@ import helmet from 'helmet';
 
 // .env validation
 import { validateEnv } from "@utils/validateEnv";
-import { loggerMiddleware } from '@utils/loggerMiddleware';
+import { LoggerMiddlewareFactory } from '@/utils/factories/LoggerMiddlewareFactory';
 
 // debug IOC
 import { Kernel } from '@containers/inversify.config';
-import { TYPES } from '@containers/types/types';
-
-import { ILoggerManager } from '@contracts/ILoggerManager';
+import { ILoggerManager } from './contracts/ILoggerManager';
+import { TYPES } from './containers/types/types';
 const iocKernel = new Kernel();
-const Ilogger = iocKernel.get<ILoggerManager>(TYPES.ILoggerManager);
 // end debug IOC
 
 // app vars
@@ -23,16 +21,17 @@ validateEnv();
 // init express app
 export const app = express();
 
-app.use(loggerMiddleware);
+app.use(LoggerMiddlewareFactory.GetLoggerMiddleware(iocKernel));
 
-// REMOVE THIS AS SOON INITIATE IOC!
+// REMOVE THIS AS SOON INITIATE ROUTES!
 app.get('/logger', (_, res) =>
 {
-    Ilogger.LogInfo("Halo dari IOC");
     res.send("Hello from logger!");
-})
-
-
+});
+app.get('/logger/error/:msg', (req, res) => {
+    iocKernel.get<ILoggerManager>(TYPES.ILoggerManager).LogError(req.params["msg"]);
+    res.send("Error ini, belum kirim tetekbengeknya");
+});
 // middlewares
 app.use(helmet());
 app.use(cors());
