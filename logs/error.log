@@ -20,3 +20,10 @@
 2024-03-16 18:50:22:5022 [31merror[39m: [31mSomething went wrong : 500 a[39m
 2024-03-16 18:52:33:5233 [31merror[39m: [31mSomething went wrong : 500 a[39m
 2024-03-16 23:08:45:845 [31merror[39m: [31mSomething went wrong : 500 a[39m
+2024-03-16 23:35:24:3524 [31merror[39m: [31mSomething went wrong : 500 No matching bindings found for serviceIdentifier: IProdukRepository[39m
+2024-03-16 23:37:20:3720 [31merror[39m: [31mSomething went wrong : 500 Missing required @injectable annotation in: MeDatabaseContext.[39m
+2024-03-16 23:37:22:3722 [31merror[39m: [31mSomething went wrong : 500 Missing required @injectable annotation in: MeDatabaseContext.[39m
+2024-03-16 23:37:23:3723 [31merror[39m: [31mSomething went wrong : 500 Missing required @injectable annotation in: MeDatabaseContext.[39m
+2024-03-16 23:38:29:3829 [31merror[39m: [31mSomething went wrong : 500 Method not implemented.[39m
+2024-03-16 23:38:54:3854 [31merror[39m: [31mSomething went wrong : 500 Method not implemented.[39m
+2024-03-16 23:46:20:4620 [31merror[39m: [31mSomething went wrong : 500 Method not implemented.[39m

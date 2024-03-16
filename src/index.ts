@@ -22,6 +22,7 @@ import { ErrorHandlerMiddleware } from '@/middlewares/ErrorHandlerMiddleware';
 // debug error
 import { BadRequestException } from '@entities/exceptions/BadRequestException';
 import to from 'await-to-js';
+import { IProdukRepository } from './contracts/repositories/IProdukRepository';
 //
 
 // app vars
@@ -40,13 +41,21 @@ app.get('/logger', (_, res) =>
     res.send("Hello from logger!");
 });
 app.get('/logger/error/:msg', (req, res, next) => {
-    
     try {
         throw new BadRequestException(req.params["msg"]);
     } catch(error) {
         return next(error);
     }
 });
+app.get('/repos', (_, res, next) => {
+    const repo = iocKernel.get<IProdukRepository>(TYPES.IProdukRepository);
+    try {
+        repo.FindByCondition("", false);
+        res.send("Gol ini");
+    } catch(error) {
+        throw new BadRequestException(error);
+    }
+})
 // middlewares
 app.use(helmet());
 app.use(cors());
