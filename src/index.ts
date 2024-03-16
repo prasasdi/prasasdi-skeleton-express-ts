@@ -5,28 +5,34 @@ import helmet from 'helmet';
 
 // .env validation
 import { validateEnv } from "@utils/validateEnv";
-import { LoggerMiddlewareFactory } from '@/utils/factories/LoggerMiddlewareFactory';
+import { LoggerMiddleware } from '@/middlewares/LoggerMiddleware';
 
 // debug IOC
 import { Kernel } from '@containers/inversify.config';
 import { ILoggerManager } from './contracts/ILoggerManager';
 import { TYPES } from './containers/types/types';
-const iocKernel = new Kernel();
+const iocKernel:Kernel = new Kernel();
 // end debug IOC
 
 // error handling middleware
 import methodOverride from 'method-override';
-import { errorHandler } from '@middlewares/ErrorHandler';
+import { ErrorHandlerMiddleware } from '@/middlewares/ErrorHandlerMiddleware';
 // end error handling middleware
+
+// debug error
+import { BadRequestException } from '@entities/exceptions/BadRequestException';
+import to from 'await-to-js';
+//
 
 // app vars
 dotenv.config();
 validateEnv();
 
 // init express app
-export const app = express();
+export const app:express.Express = express();
 
-app.use(LoggerMiddlewareFactory.GetLoggerMiddleware(iocKernel));
+const logger = iocKernel.get<ILoggerManager>(TYPES.ILoggerManager);
+app.use(LoggerMiddleware.GetLoggerMiddleware(logger));
 
 // REMOVE THIS AS SOON INITIATE ROUTES!
 app.get('/logger', (_, res) =>
@@ -34,10 +40,9 @@ app.get('/logger', (_, res) =>
     res.send("Hello from logger!");
 });
 app.get('/logger/error/:msg', (req, res, next) => {
-    iocKernel.get<ILoggerManager>(TYPES.ILoggerManager).LogError(req.params["msg"]);
-    // res.send("Error ini, belum kirim tetekbengeknya");
+    const [error] = await to(false);
     try {
-        throw new Error(req.params["msg"]);
+        throw new BadRequestException(req.params["msg"]);
     } catch(error) {
         return next(error);
     }
@@ -51,4 +56,5 @@ app.use(express.urlencoded({
 }));
 app.use(methodOverride());
 app.use(express.json());
-app.use(errorHandler);
+
+app.use(ErrorHandlerMiddleware.GetExceptionHandler(logger));

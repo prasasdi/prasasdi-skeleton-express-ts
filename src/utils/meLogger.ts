@@ -3,7 +3,7 @@ import { ColorsEnum } from "@enums/logger/ColorsEnum";
 import { LevelsEnum } from '@/enums/logger/LevelsEnum';
 import { LoggerLevel } from '@/shared/LoggerLevel';
 
-export class NikiLoggerCah {
+export class MeLogger {
     static GetCurrentLogger(): winston.Logger {
         // const format = winston.format.combine(
         //     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),

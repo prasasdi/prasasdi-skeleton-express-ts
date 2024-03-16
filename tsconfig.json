@@ -30,6 +30,7 @@
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
       "@models/*": ["models/*"],
+      "@entities/*": ["entities/*"],
       "@routers/*": ["routers/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],

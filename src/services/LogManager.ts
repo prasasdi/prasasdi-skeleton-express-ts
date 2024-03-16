@@ -1,10 +1,10 @@
-import { ILoggerManager } from "@/contracts/ILoggerManager";
-import { NikiLoggerCah } from "@/utils/NikiLoggerCah";
+import { ILoggerManager } from "@contracts/ILoggerManager";
+import { MeLogger } from "@utils/meLogger";
 import { injectable } from "inversify";
 
 @injectable()
 export class LoggerManager implements ILoggerManager {
-    Logger = NikiLoggerCah.GetCurrentLogger();
+    Logger = MeLogger.GetCurrentLogger();
 
     LogError(message:string):void {
         this.Logger.error(message);
