@@ -104,3 +104,6 @@
 2024-03-16 18:52:33:5233 [31merror[39m: [31mSomething went wrong : 500 a[39m
 2024-03-16 18:52:33:5233 [35mhttp[39m: [35mGET /logger/error/a 500 32 - 28.170 ms[39m
 [35m[39m
+2024-03-16 23:08:45:845 [31merror[39m: [31mSomething went wrong : 500 a[39m
+2024-03-16 23:08:46:846 [35mhttp[39m: [35mGET /logger/error/a 500 32 - 21.627 ms[39m
+[35m[39m

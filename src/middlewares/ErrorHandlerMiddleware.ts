@@ -7,10 +7,8 @@ import { Express, Request, Response, NextFunction } from 'express';
 import { injectable, inject } from 'inversify';
 import 'reflect-metadata';
 
-@injectable()
 export class ErrorHandlerMiddleware {
-    static GetExceptionHandler(ILogger:ILoggerManager)
-    {
+    static GetExceptionHandler(ILogger:ILoggerManager) {
         return (error: IHTTPError, req: Request, res: Response, next: NextFunction) => {
             const statusCode = error.statusCode || HTTPStatusCode.InternalServerError;
             const message = error.message || Object.keys(HTTPStatusCode.InternalServerError);

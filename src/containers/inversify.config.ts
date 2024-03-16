@@ -2,10 +2,14 @@ import { Container } from "inversify";
 import 'reflect-metadata';
 import { TYPES } from "@containers/types/types";
 
-//
-import { ILoggerManager } from "@/contracts/ILoggerManager";
-import { LoggerManager } from "@/services/LogManager";
-//
+// Interfaces
+import { ILoggerManager } from "@contracts/ILoggerManager";
+
+// implementations
+import { LoggerManager } from "@services/LogManager";
+
+// single services
+import { MeDatabaseContext } from "@utils/database/MeDatabaseContext";
 
 export class Kernel extends Container {
     constructor() {
@@ -15,5 +19,6 @@ export class Kernel extends Container {
 
     declareDependencies() {
         this.bind<ILoggerManager>(TYPES.ILoggerManager).to(LoggerManager).inSingletonScope();
+        this.bind<MeDatabaseContext>(TYPES.MeDatabaseContext).to(MeDatabaseContext);
     }
 }
