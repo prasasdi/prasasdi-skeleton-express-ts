@@ -1,5 +1,5 @@
 import { ILoggerManager } from "@contracts/ILoggerManager";
-import { MeLogger } from "@utils/meLogger";
+import { MeLogger } from "@utils/MeLogger";
 import { injectable } from "inversify";
 
 @injectable()

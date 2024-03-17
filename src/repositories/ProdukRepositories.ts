@@ -12,7 +12,6 @@ export class ProdukRepository implements IProdukRepository {
     constructor(@inject(TYPES.ILoggerManager) ILogger:ILoggerManager, @inject(TYPES.MeDatabaseContext) DBContext) {
         this.Logger = ILogger;
         this.DBContext = DBContext;
-
         this.Logger.LogDebug("inject via @inject dalam class @injectable");
     }
 

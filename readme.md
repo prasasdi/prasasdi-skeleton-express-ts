@@ -13,7 +13,13 @@ Untuk menjaga alur pengerjaan, dibuatlah langkah konstruksi bangunan secara beru
 4.1 Konfigurasi ErrorHandler sebagai middleware<br>
 4.2 Coba dengan throw error dari salah satu route sementara<br>
 5. Inisiasi Model, Services, Controllers<br>
-5.1 Buat Database Context dan Servicenya<br>
-5.2 Konfigurasi Context dalam IoC<br>
+5.1.a Buat Database Context dan Servicenya<br>
+5.1.b Konfigurasi Context dalam IoC<br>
+5.2.a Buat satu dulu Model atau Entities dari tiap use case<br>
+5.2.b Buat Repository dan Interfacenya (pada contracts) dari enties, (jika 5.1.b sudah berhasil) konfigurasi scope ke container<br>
+5.2.c Buat Service dan Interfacenya (pada service.contracts) dari entities, (jika 5.1.b sudah berhasil) konfigurasi scope ke container, inject dependensi Repository dan Logger<br>
+5.2.d Buat Controller sesuai dengan Service beserta dengan Route juga konfigurasi Rutenya<br>
+5.3 Tes<br>
+6. Inisiasi test unit pada projek<br>
 
 Cara pakai

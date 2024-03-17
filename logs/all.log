@@ -131,3 +131,13 @@
 2024-03-16 23:46:20:4620 [31merror[39m: [31mSomething went wrong : 500 Method not implemented.[39m
 2024-03-16 23:46:20:4620 [35mhttp[39m: [35mGET /repos 500 54 - 45.892 ms[39m
 [35m[39m
+2024-03-17 09:54:52:5452 [35mhttp[39m: [35mGET /logger 200 18 - 10.644 ms[39m
+[35m[39m
+2024-03-17 09:54:52:5452 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 6.095 ms[39m
+[35m[39m
+2024-03-17 09:55:00:550 [31merror[39m: [31mSomething went wrong : 500 msg[39m
+2024-03-17 09:55:00:550 [35mhttp[39m: [35mGET /logger/error/msg 500 34 - 5.802 ms[39m
+[35m[39m
+2024-03-17 09:55:08:558 [31merror[39m: [31mSomething went wrong : 500 msg[39m
+2024-03-17 09:55:08:558 [35mhttp[39m: [35mGET /logger/error/msg 500 34 - 6.399 ms[39m
+[35m[39m
