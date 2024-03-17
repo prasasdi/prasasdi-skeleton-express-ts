@@ -22,4 +22,8 @@ Untuk menjaga alur pengerjaan, dibuatlah langkah konstruksi bangunan secara beru
 5.3 Tes<br>
 6. Inisiasi test unit pada projek<br>
 
-Cara pakai
+== Download a/u Clone Project 
+1. git clone https://github.com/prasasdi/prasasdi-skeleton-express-ts.git
+2. cd prasasdi-skeleton-express-ts
+3. npm i (atau) npm install
+4. npm run dev
