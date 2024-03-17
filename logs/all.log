@@ -141,3 +141,10 @@
 2024-03-17 09:55:08:558 [31merror[39m: [31mSomething went wrong : 500 msg[39m
 2024-03-17 09:55:08:558 [35mhttp[39m: [35mGET /logger/error/msg 500 34 - 6.399 ms[39m
 [35m[39m
+2024-03-17 10:10:43:1043 [35mhttp[39m: [35mGET /logger 200 18 - 9.764 ms[39m
+[35m[39m
+2024-03-17 10:10:43:1043 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 9.599 ms[39m
+[35m[39m
+2024-03-17 10:10:59:1059 [31merror[39m: [31mSomething went wrong : 500 pesannya_ini[39m
+2024-03-17 10:10:59:1059 [35mhttp[39m: [35mGET /logger/error/pesannya_ini 500 43 - 11.088 ms[39m
+[35m[39m
