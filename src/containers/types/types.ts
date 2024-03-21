@@ -1,5 +1,9 @@
 export const TYPES = {
     MeDatabaseContext: "MeDatabaseContext",
     ILoggerManager: "ILoggerManager",
-    IProdukRepository : "IProdukRepository"
+    IRepositoryBase: "IRepositoryBase",
+
+    // lazy
+    IRepositoryManager: "IRepositoryManager", 
+    IServiceManager: "IServiceManager"
 };

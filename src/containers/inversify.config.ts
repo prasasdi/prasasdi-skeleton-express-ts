@@ -8,10 +8,15 @@ import { IProdukRepository } from "@contracts/repositories/IProdukRepository";
 
 // implementations
 import { LoggerManager } from "@services/LogManager";
-import { ProdukRepository } from "@repositories/ProdukRepositories";
+import { ProdukRepository } from "@/repositories/ProdukRepository";
 
 // single services
 import { MeDatabaseContext } from "@utils/database/MeDatabaseContext";
+import { IRepositoryBase } from "@/contracts/repositories/IRepositoryBase";
+import { RepositoryBase } from "@/repositories/RepositoryBase";
+import { Produk } from "@/entities/Produk";
+import { IRepositoryManager } from "@/contracts/repositories/IRepositoryManager";
+import { RepositoryManager } from "@/repositories/RepositoryManager";
 
 export class Kernel extends Container {
     constructor() {
@@ -22,6 +27,10 @@ export class Kernel extends Container {
     declareDependencies() {
         this.bind<ILoggerManager>(TYPES.ILoggerManager).to(LoggerManager).inSingletonScope();
         this.bind<MeDatabaseContext>(TYPES.MeDatabaseContext).to(MeDatabaseContext);
-        this.bind<IProdukRepository>(TYPES.IProdukRepository).to(ProdukRepository);
+
+        //lazy
+
+        // bind context into container
+        this.bind<IRepositoryManager>(TYPES.IRepositoryManager).to(RepositoryManager);
     }
 }

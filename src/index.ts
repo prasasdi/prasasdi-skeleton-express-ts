@@ -21,7 +21,6 @@ import { ErrorHandlerMiddleware } from '@/middlewares/ErrorHandlerMiddleware';
 
 // debug error
 import { BadRequestException } from '@entities/exceptions/BadRequestException';
-import to from 'await-to-js';
 import { IProdukRepository } from './contracts/repositories/IProdukRepository';
 //
 
