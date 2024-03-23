@@ -35,11 +35,18 @@ validateEnv();
 export const app:express.Express = express();
 
 const logger = iocKernel.get<ILoggerManager>(TYPES.ILoggerManager);
+const controllers = iocKernel.get<IControllerManager>(TYPES.IControllerManager);
+
+
+
+
 app.use(LoggerMiddleware.GetLoggerMiddleware(logger));
 
-// REMOVE THIS AS SOON INITIATE ROUTES!
-const controllers = iocKernel.get<IControllerManager>(TYPES.IControllerManager);
+app.use(ErrorHandlerMiddleware.GetExceptionHandler(logger));
+
+
 controllers.ConfigureController(app);
+
 
 
 app.get('/logger', (_, res) =>
@@ -65,5 +72,3 @@ app.use(express.urlencoded({
 }));
 app.use(methodOverride());
 app.use(express.json());
-
-app.use(ErrorHandlerMiddleware.GetExceptionHandler(logger));

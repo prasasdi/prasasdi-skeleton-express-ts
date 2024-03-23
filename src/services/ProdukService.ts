@@ -5,6 +5,11 @@ import { IRepositoryManager } from "@/contracts/repositories/IRepositoryManager"
 import { ILoggerManager } from "@/contracts/ILoggerManager";
 import { ProdukNotFoundException } from "@/entities/exceptions/Produk/ProdukNotFoundException";
 
+import to from 'await-to-js';
+import { IHTTPError } from "@/contracts/IHTTPError";
+import { HTTPStatusCode } from "@/enums/HTTPStatusCode";
+import { BadRequestException } from "@/entities/exceptions/BadRequestException";
+
 export class ProdukService implements IProdukService {
     repository: IRepositoryManager;
     logger: ILoggerManager;
@@ -18,13 +23,15 @@ export class ProdukService implements IProdukService {
         return await this.repository.Produk.find(item);
     }
     async Find(item: string): Promise<Produk> {
-        try {
-            const produkEntity = await this.repository.Produk.findOne(item);
-            return produkEntity; // Return the found produkEntity
-        } catch (error) {
-            this.logger.LogError(error);
-            throw error; // Rethrow the error to propagate it further
+        const [err, produkEntity] = await to(this.repository.Produk.findOne(item));
+        if (err) {
+            const error = err as IHTTPError
+            console.log(`ini error :>> ${error} dengan kode ${error.statusCode}`);
+            if (error.statusCode == undefined) {
+                console.log('ini')
+                throw new BadRequestException(error.message);
+            }
         }
+        return produkEntity; // Return the found produkEntity
     }
-    
 } 
