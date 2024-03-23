@@ -5,5 +5,8 @@ export const TYPES = {
 
     // lazy
     IRepositoryManager: "IRepositoryManager", 
-    IServiceManager: "IServiceManager"
+    IServiceManager: "IServiceManager",
+
+    //
+    IControllerManager : "ControllerManager"
 };

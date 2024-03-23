@@ -11,11 +11,12 @@ import { ProdukService } from "./ProdukService";
 export class ServiceManager implements IServiceManager {
     _produk:Lazy<IProdukService>;
 
-    constructor(@inject(TYPES.IRepositoryManager) repository, @inject(TYPES.ILoggerManager) logger,) {
-
+    constructor(@inject(TYPES.IRepositoryManager) repository, @inject(TYPES.ILoggerManager) logger) {
         this._produk = new Lazy<IProdukService>(() => new ProdukService(repository, logger));
     }
 
-    Produk: IProdukService;
-
+    get Produk():IProdukService {
+        return this._produk.value;
+    }
+    
 }

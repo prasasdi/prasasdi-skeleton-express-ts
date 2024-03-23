@@ -3,7 +3,7 @@ import { IProdukService } from "./contracts/IProdukService";
 import { injectable } from "inversify";
 import { IRepositoryManager } from "@/contracts/repositories/IRepositoryManager";
 import { ILoggerManager } from "@/contracts/ILoggerManager";
-import { ProdukNotFoundException } from "@/entities/exceptions/ProdukNotFoundException";
+import { ProdukNotFoundException } from "@/entities/exceptions/Produk/ProdukNotFoundException";
 
 export class ProdukService implements IProdukService {
     repository: IRepositoryManager;
@@ -20,10 +20,6 @@ export class ProdukService implements IProdukService {
     async Find(item: string): Promise<Produk> {
         try {
             const produkEntity = await this.repository.Produk.findOne(item);
-            if (!produkEntity) {
-                throw new ProdukNotFoundException(`Produk dengan ID : ${item} tidak ditemukan!`);
-            }
-            console.log(produkEntity);
             return produkEntity; // Return the found produkEntity
         } catch (error) {
             this.logger.LogError(error);

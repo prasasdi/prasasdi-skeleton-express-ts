@@ -22,6 +22,9 @@ import { ErrorHandlerMiddleware } from '@/middlewares/ErrorHandlerMiddleware';
 // debug error
 import { BadRequestException } from '@entities/exceptions/BadRequestException';
 import { IProdukRepository } from './contracts/repositories/IProdukRepository';
+import { ProdukNotFoundException } from './entities/exceptions/Produk/ProdukNotFoundException';
+import { ProdukNoContentException } from './entities/exceptions/Produk/ProdukNoContentException';
+import { IControllerManager } from './contracts/IControllerManager';
 //
 
 // app vars
@@ -35,6 +38,10 @@ const logger = iocKernel.get<ILoggerManager>(TYPES.ILoggerManager);
 app.use(LoggerMiddleware.GetLoggerMiddleware(logger));
 
 // REMOVE THIS AS SOON INITIATE ROUTES!
+const controllers = iocKernel.get<IControllerManager>(TYPES.IControllerManager);
+controllers.ConfigureController(app);
+
+
 app.get('/logger', (_, res) =>
 {
     res.send("Hello from logger!");
@@ -47,14 +54,8 @@ app.get('/logger/error/:msg', (req, res, next) => {
     }
 });
 app.get('/repos', (_, res, next) => {
-    const repo = iocKernel.get<IProdukRepository>(TYPES.IProdukRepository);
-    try {
-        repo.FindByCondition("", false);
-        res.send("Gol ini");
-    } catch(error) {
-        throw new BadRequestException(error);
-    }
-})
+    throw new ProdukNoContentException("12AC");
+});
 // middlewares
 app.use(helmet());
 app.use(cors());
