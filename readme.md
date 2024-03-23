@@ -1,7 +1,8 @@
 Rangka pikiran<br>
 <br>
 Mengimplementasi RestAPI pada TypeScript seperti apa yang saya pernah kerjakan pada projek .Net.<br>
-Mengkonfigurasi IoC, Logger, ExceptionHandling, Repository, dan Layer Data Transferale Object, kecuali menggunakan ORM seperti LinQ pada Entity Framework milik .NET<br><br>
+Mengkonfigurasi IoC, Logger, ExceptionHandling, Repository, dan Layer Data Transferale Object, kecuali menggunakan ORM seperti LinQ pada Entity Framework milik .NET<br>
+Meminimalisir sebisa mungkin penggunaan dependensi yang sifatnya selain dari Express sarankan<br>
 
 Untuk menjaga alur pengerjaan, dibuatlah langkah konstruksi bangunan secara berurutan seperti ini<br>
 1. Inisiasi http server projek ExpressJS dengan TS
